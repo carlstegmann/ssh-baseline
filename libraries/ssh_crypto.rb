@@ -23,7 +23,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
   end
 
-  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default ciphers
     ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
     ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
@@ -32,12 +32,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust ciphers based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        ciphers = ciphers53
-      when '14.04', '15.10', '16.04', '18.04'
-        ciphers = ciphers66
-      end
+      ciphers = ciphers66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./, /^7\./
@@ -49,10 +44,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./
         ciphers = ciphers53
-      when /^7\./
+      when /^7\./, /^8\./
         ciphers = ciphers66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon', 'fedora', 'alpine', 'arch'
       ciphers = ciphers66
     when 'opensuse'
       case inspec.os[:release]
@@ -73,21 +68,19 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     ciphers
   end
 
-  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     # define a set of default KEXs
+    kex80 = 'sntrup4591761x25519-sha512@tinyssh.org,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
     kex = kex59
 
     # adjust KEXs based on OS + release
     case inspec.os[:name]
+    # https://packages.ubuntu.com/search?keywords=openssh-server
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        kex = kex59
-      when '14.04', '15.10', '16.04', '18.04'
-        kex = kex66
-      end
+      kex = inspec.os[:release][0, 2] >= '19' ? kex80 : kex66
+    # https://packages.debian.org/search?keywords=openssh-server
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -96,6 +89,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = kex59
       when /^8\./, /^9\./, /^10\./
         kex = kex66
+      when /^11\./
+        kex = kex80
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
@@ -103,22 +98,30 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = nil
       when /^7\./
         kex = kex66
+      when /^8\./
+        kex = kex80
       end
-    when 'amazon', 'fedora', 'alpine'
+    # https://pkgs.alpinelinux.org/packages?name=openssh
+    when 'arch'
+      kex = kex80
+    when 'alpine'
+      kex = inspec.os[:release].split('.')[1] >= '10' ? kex80 : kex66
+    when 'amazon'
       kex = kex66
+    # https://src.fedoraproject.org/rpms/openssh
+    when 'fedora'
+      kex = inspec.os[:release] >= '30' ? kex80 : kex66
+    # https://software.opensuse.org/package/openssh
     when 'opensuse'
-      case inspec.os[:release]
-      when /^13\.2/
-        kex = kex66
-      when /^42\./
-        kex = kex66
-      end
+      kex = inspec.os[:release] >= '15.2' ? kex80 : kex66
     when 'mac_os_x'
       case inspec.os[:release]
       when /^10.9\./
         kex = kex59
       when /^10.10\./, /^10.11\./, /^10.12\./
         kex = kex66
+      when /^10.15\./
+        kex = kex80
       end
     end
 
@@ -130,17 +133,13 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'
     macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
     macs53 = 'hmac-ripemd160,hmac-sha1'
+    macs53_el65 = 'hmac-sha2-512,hmac-sha2-256'
     macs = macs59
 
     # adjust MACs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        macs = macs59
-      when '14.04', '15.10', '16.04', '18.04'
-        macs = macs66
-      end
+      macs = macs66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -153,11 +152,16 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
       when /^6\./
-        macs = macs53
-      when /^7\./
+        # RedHat Enterprise Linux (and family) backported SHA2 support to their fork of OpenSSH 5.3 in RHEL 6.5.
+        # See BZ#969565 at:
+        # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html-single/6.5_technical_notes/index#openssh
+        # Because extended support (EUS) updates for 6.x minor releases is no longer available,
+        # only the settings available for the supported (latest) 6.x release are recommended.
+        macs = macs53_el65
+      when /^7\./, /^8\./
         macs = macs66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon', 'fedora', 'alpine', 'arch'
       macs = macs66
     when 'opensuse'
       case inspec.os[:release]
@@ -178,7 +182,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs
   end
 
-  def valid_privseparation
+  def valid_privseparation # rubocop:disable Metrics/CyclomaticComplexity
     # define privilege separation set
     ps53 = 'yes'
     ps59 = 'sandbox'
@@ -203,13 +207,15 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         ps = ps53
       when /^7\./
         ps = ps59
+      when /^8\./
+        ps = ps75
       end
     when 'ubuntu'
       case inspec.os[:release]
-      when /^18\./
+      when /^18\./, /^20\./
         ps = ps75
       end
-    when 'fedora', 'alpine'
+    when 'fedora', 'alpine', 'arch'
       ps = ps75
     end
 
@@ -217,7 +223,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   end
 
   # return a list of valid algoriths for a current platform
-  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity
     alg53 = %w[rsa]
     alg60 = %w[rsa ecdsa]
     alg66 = %w[rsa ecdsa ed25519]
@@ -225,12 +231,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        alg = alg53
-      when '14.04', '15.10', '16.04', '18.04'
-        alg = alg66
-      end
+      alg = alg53 if inspec.os[:release][0, 2] < '14'
     when 'debian'
       case inspec.os[:release]
       when /^7\./
@@ -245,7 +246,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^7\./
         alg = alg66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon', 'fedora', 'alpine', 'arch'
       alg = alg66
     when 'opensuse'
       case inspec.os[:release]
@@ -264,16 +265,5 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     end
 
     alg
-  end
-
-  # returns the hostkeys value based on valid_algorithms
-  def valid_hostkeys
-    hostkeys = valid_algorithms.map { |alg| "/etc/ssh/ssh_host_#{alg}_key" }
-    # its('HostKey') provides a string for a single-element value.
-    # we have to return a string if we have a single-element
-    # https://github.com/chef/inspec/issues/1434
-    return hostkeys[0] if hostkeys.length == 1
-
-    hostkeys
   end
 end

@@ -1,6 +1,180 @@
-# Change Log
+# Changelog
+
+## [2.6.0](https://github.com/dev-sec/ssh-baseline/tree/2.6.0) (2020-08-22)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.14...2.6.0)
+
+**Implemented enhancements:**
+
+- add support for ubuntu20.04 [\#181](https://github.com/dev-sec/ssh-baseline/pull/181) ([schurzi](https://github.com/schurzi))
+
+**Closed issues:**
+
+- undefined method `match?' for nil:NilClass - CentOs 7 [\#179](https://github.com/dev-sec/ssh-baseline/issues/179)
+
+## [2.5.14](https://github.com/dev-sec/ssh-baseline/tree/2.5.14) (2020-08-07)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.13...2.5.14)
+
+**Merged pull requests:**
+
+- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
+
+## [2.5.13](https://github.com/dev-sec/ssh-baseline/tree/2.5.13) (2020-07-23)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.12...2.5.13)
+
+**Merged pull requests:**
+
+- The release draft references the correct SHA [\#178](https://github.com/dev-sec/ssh-baseline/pull/178) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.12](https://github.com/dev-sec/ssh-baseline/tree/2.5.12) (2020-07-22)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.11...2.5.12)
+
+**Merged pull requests:**
+
+- rework CRYPTO\_POLICY check to work with fedora [\#177](https://github.com/dev-sec/ssh-baseline/pull/177) ([schurzi](https://github.com/schurzi))
+
+## [2.5.11](https://github.com/dev-sec/ssh-baseline/tree/2.5.11) (2020-07-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.10...2.5.11)
+
+**Implemented enhancements:**
+
+- add control for CRYPTO\_POLICY on RedHat [\#176](https://github.com/dev-sec/ssh-baseline/pull/176) ([schurzi](https://github.com/schurzi))
+
+## [2.5.10](https://github.com/dev-sec/ssh-baseline/tree/2.5.10) (2020-07-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.9...2.5.10)
+
+**Implemented enhancements:**
+
+- use correct kex for RedHat/CentOS/Oracle Linux 8 [\#175](https://github.com/dev-sec/ssh-baseline/pull/175) ([schurzi](https://github.com/schurzi))
+
+## [2.5.9](https://github.com/dev-sec/ssh-baseline/tree/2.5.9) (2020-07-04)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.8...2.5.9)
+
+**Merged pull requests:**
+
+- ssh host keys in a specific directory [\#174](https://github.com/dev-sec/ssh-baseline/pull/174) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.8](https://github.com/dev-sec/ssh-baseline/tree/2.5.8) (2020-06-18)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.7...2.5.8)
+
+**Implemented enhancements:**
+
+- Add support for Archlinux [\#173](https://github.com/dev-sec/ssh-baseline/pull/173) ([mesaguy](https://github.com/mesaguy))
+
+**Closed issues:**
+
+- Support KEX for OpenSSH 8.0+ & quantum resistant KEX [\#144](https://github.com/dev-sec/ssh-baseline/issues/144)
+
+## [2.5.7](https://github.com/dev-sec/ssh-baseline/tree/2.5.7) (2020-05-25)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.6...2.5.7)
+
+**Merged pull requests:**
+
+- OpenSSH 8.0 KEXs support [\#172](https://github.com/dev-sec/ssh-baseline/pull/172) ([sfuerte](https://github.com/sfuerte))
+
+## [2.5.6](https://github.com/dev-sec/ssh-baseline/tree/2.5.6) (2020-05-20)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.5...2.5.6)
+
+**Closed issues:**
+
+- PR \#163 leads to failing sshd-14 check [\#169](https://github.com/dev-sec/ssh-baseline/issues/169)
+
+**Merged pull requests:**
+
+- ListenAddress should exist [\#165](https://github.com/dev-sec/ssh-baseline/pull/165) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.5](https://github.com/dev-sec/ssh-baseline/tree/2.5.5) (2020-05-20)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.4...2.5.5)
+
+**Closed issues:**
+
+- Create release workflow [\#156](https://github.com/dev-sec/ssh-baseline/issues/156)
+
+**Merged pull requests:**
+
+- Use inspec.input to load the attribute [\#168](https://github.com/dev-sec/ssh-baseline/pull/168) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.4](https://github.com/dev-sec/ssh-baseline/tree/2.5.4) (2020-05-19)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.3...2.5.4)
+
+**Merged pull requests:**
+
+- CHANGELOG for RELEASE done before the push to avoid breaking [\#167](https://github.com/dev-sec/ssh-baseline/pull/167) ([micheelengronne](https://github.com/micheelengronne))
+- sshd custom port [\#164](https://github.com/dev-sec/ssh-baseline/pull/164) ([micheelengronne](https://github.com/micheelengronne))
+- custom path for hostkeys [\#163](https://github.com/dev-sec/ssh-baseline/pull/163) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.3](https://github.com/dev-sec/ssh-baseline/tree/2.5.3) (2020-05-19)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.2...2.5.3)
+
+**Merged pull requests:**
+
+- release trigger [\#166](https://github.com/dev-sec/ssh-baseline/pull/166) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.2](https://github.com/dev-sec/ssh-baseline/tree/2.5.2) (2020-05-19)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.1...2.5.2)
+
+**Merged pull requests:**
+
+- changelog only triggered when release [\#162](https://github.com/dev-sec/ssh-baseline/pull/162) ([micheelengronne](https://github.com/micheelengronne))
+- sshd\_config custom path [\#161](https://github.com/dev-sec/ssh-baseline/pull/161) ([micheelengronne](https://github.com/micheelengronne))
+- Continously updated changelog [\#160](https://github.com/dev-sec/ssh-baseline/pull/160) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.1](https://github.com/dev-sec/ssh-baseline/tree/2.5.1) (2020-05-18)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
+
+## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
+
+**Closed issues:**
+
+- Mozilla OpenSSH Guidelines [\#150](https://github.com/dev-sec/ssh-baseline/issues/150)
+- Test SSHD running as another user [\#149](https://github.com/dev-sec/ssh-baseline/issues/149)
+- New release [\#147](https://github.com/dev-sec/ssh-baseline/issues/147)
+- Test for sha2 HMACs on RHEL 6 / CentOS 6 [\#145](https://github.com/dev-sec/ssh-baseline/issues/145)
+- max\_auth\_tries is a string not numeric [\#139](https://github.com/dev-sec/ssh-baseline/issues/139)
+- MaxAuthTries - Citation\(s\) for baseline choice. [\#137](https://github.com/dev-sec/ssh-baseline/issues/137)
+
+**Merged pull requests:**
+
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
+- API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
+- Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
+- In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
+- ubuntu versions [\#151](https://github.com/dev-sec/ssh-baseline/pull/151) ([micheelengronne](https://github.com/micheelengronne))
+- Use SHA2 HMACs in OpenSSH for RHEL family 6.5+ [\#146](https://github.com/dev-sec/ssh-baseline/pull/146) ([foonix](https://github.com/foonix))
+- Support of CentOS 8 [\#143](https://github.com/dev-sec/ssh-baseline/pull/143) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Move atribute to spec as local var [\#142](https://github.com/dev-sec/ssh-baseline/pull/142) ([kiwivogel](https://github.com/kiwivogel))
+- Fix deprecations [\#141](https://github.com/dev-sec/ssh-baseline/pull/141) ([kiwivogel](https://github.com/kiwivogel))
+- Issue 139 - Use cmp instead of be matcher to allow string matching  [\#140](https://github.com/dev-sec/ssh-baseline/pull/140) ([chbiel](https://github.com/chbiel))
+- Issue 137 - MaxAuthTries Parameter. [\#138](https://github.com/dev-sec/ssh-baseline/pull/138) ([monobaila](https://github.com/monobaila))
+- Debian 10 has Openssh 7.9 with deperecated UsePrivilegeSeparation [\#135](https://github.com/dev-sec/ssh-baseline/pull/135) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Debian 10 support for ciphers, kex, macs [\#134](https://github.com/dev-sec/ssh-baseline/pull/134) ([artem-sidorenko](https://github.com/artem-sidorenko))
+
+## [2.4.1](https://github.com/dev-sec/ssh-baseline/tree/2.4.1) (2019-05-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.0...2.4.1)
+
+**Merged pull requests:**
+
+- Bump version to 2.4.1 and switch to inspec 3 for check [\#131](https://github.com/dev-sec/ssh-baseline/pull/131) ([alexpop](https://github.com/alexpop))
 
 ## [2.4.0](https://github.com/dev-sec/ssh-baseline/tree/2.4.0) (2019-02-25)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.2...2.4.0)
 
 **Closed issues:**
@@ -28,6 +202,7 @@
 - Initial support for Alpine Linux [\#102](https://github.com/dev-sec/ssh-baseline/pull/102) ([radhus](https://github.com/radhus))
 
 ## [2.3.2](https://github.com/dev-sec/ssh-baseline/tree/2.3.2) (2018-04-20)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.1...2.3.2)
 
 **Merged pull requests:**
@@ -35,6 +210,7 @@
 - Fix bogus success of sshd-47 on non Debian [\#100](https://github.com/dev-sec/ssh-baseline/pull/100) ([eramoto](https://github.com/eramoto))
 
 ## [2.3.1](https://github.com/dev-sec/ssh-baseline/tree/2.3.1) (2018-02-13)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.0...2.3.1)
 
 **Closed issues:**
@@ -47,6 +223,7 @@
 - Support Amazon Linux [\#97](https://github.com/dev-sec/ssh-baseline/pull/97) ([woneill](https://github.com/woneill))
 
 ## [2.3.0](https://github.com/dev-sec/ssh-baseline/tree/2.3.0) (2017-12-01)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.2.0...2.3.0)
 
 **Closed issues:**
@@ -61,6 +238,7 @@
 - Support of OpenSuse Leap 42.2 [\#88](https://github.com/dev-sec/ssh-baseline/pull/88) ([artem-sidorenko](https://github.com/artem-sidorenko))
 
 ## [2.2.0](https://github.com/dev-sec/ssh-baseline/tree/2.2.0) (2017-05-08)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.1.1...2.2.0)
 
 **Merged pull requests:**
@@ -79,6 +257,7 @@
 - Remove the PAM deactivation enforcement [\#72](https://github.com/dev-sec/ssh-baseline/pull/72) ([artem-sidorenko](https://github.com/artem-sidorenko))
 
 ## [2.1.1](https://github.com/dev-sec/ssh-baseline/tree/2.1.1) (2016-12-22)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.1.0...2.1.1)
 
 **Closed issues:**
@@ -96,6 +275,7 @@
 - Fixing inspec tests for ubuntu hosts [\#63](https://github.com/dev-sec/ssh-baseline/pull/63) ([attachmentgenie](https://github.com/attachmentgenie))
 
 ## [2.1.0](https://github.com/dev-sec/ssh-baseline/tree/2.1.0) (2016-07-27)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.0.0...2.1.0)
 
 **Closed issues:**
@@ -110,6 +290,7 @@
 - changed from hardening-io to dev-sec in README.md and added ubuntu and centos version to ssh\_crypto.rb [\#59](https://github.com/dev-sec/ssh-baseline/pull/59) ([atomic111](https://github.com/atomic111))
 
 ## [2.0.0](https://github.com/dev-sec/ssh-baseline/tree/2.0.0) (2016-04-28)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/1.2.0...2.0.0)
 
 **Fixed bugs:**
@@ -121,6 +302,7 @@
 - migrate to InSpec profile [\#56](https://github.com/dev-sec/ssh-baseline/pull/56) ([chris-rock](https://github.com/chris-rock))
 
 ## [1.2.0](https://github.com/dev-sec/ssh-baseline/tree/1.2.0) (2016-04-25)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/1.1.1...1.2.0)
 
 **Closed issues:**
@@ -132,23 +314,13 @@
 - 1.2.0 [\#57](https://github.com/dev-sec/ssh-baseline/pull/57) ([chris-rock](https://github.com/chris-rock))
 - Symlinks real suite names to "default" [\#55](https://github.com/dev-sec/ssh-baseline/pull/55) ([conorsch](https://github.com/conorsch))
 - complet inspec tests [\#52](https://github.com/dev-sec/ssh-baseline/pull/52) ([atomic111](https://github.com/atomic111))
-- Improve Ansible tests [\#51](https://github.com/dev-sec/ssh-baseline/pull/51) ([rndmh3ro](https://github.com/rndmh3ro))
-- Fix typos [\#50](https://github.com/dev-sec/ssh-baseline/pull/50) ([rndmh3ro](https://github.com/rndmh3ro))
-- update urls [\#49](https://github.com/dev-sec/ssh-baseline/pull/49) ([chris-rock](https://github.com/chris-rock))
-- feature: debian 8 support [\#48](https://github.com/dev-sec/ssh-baseline/pull/48) ([arlimus](https://github.com/arlimus))
-- Add Ansible support [\#46](https://github.com/dev-sec/ssh-baseline/pull/46) ([rndmh3ro](https://github.com/rndmh3ro))
-- feature: UsePrivilegeSeparation = sandbox for ssh \>= 5.9 [\#44](https://github.com/dev-sec/ssh-baseline/pull/44) ([arlimus](https://github.com/arlimus))
 
 ## [1.1.1](https://github.com/dev-sec/ssh-baseline/tree/1.1.1) (2015-01-14)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/1.1.0...1.1.1)
 
-**Merged pull requests:**
-
-- remove sha1-based key-exchange mechanisms [\#43](https://github.com/dev-sec/ssh-baseline/pull/43) ([arlimus](https://github.com/arlimus))
-- add json format option [\#42](https://github.com/dev-sec/ssh-baseline/pull/42) ([atomic111](https://github.com/atomic111))
-- reprioritize etm macs [\#41](https://github.com/dev-sec/ssh-baseline/pull/41) ([arlimus](https://github.com/arlimus))
-
 ## [1.1.0](https://github.com/dev-sec/ssh-baseline/tree/1.1.0) (2015-01-12)
+
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/1.0.0...1.1.0)
 
 **Closed issues:**
@@ -157,17 +329,12 @@
 
 **Merged pull requests:**
 
-- feature: add back gcm [\#40](https://github.com/dev-sec/ssh-baseline/pull/40) ([arlimus](https://github.com/arlimus))
-- Descriptive spec [\#39](https://github.com/dev-sec/ssh-baseline/pull/39) ([arlimus](https://github.com/arlimus))
-- Update common [\#38](https://github.com/dev-sec/ssh-baseline/pull/38) ([arlimus](https://github.com/arlimus))
-- remove options that only apply to SSH protocol version 1 [\#37](https://github.com/dev-sec/ssh-baseline/pull/37) ([arlimus](https://github.com/arlimus))
-- Update common [\#36](https://github.com/dev-sec/ssh-baseline/pull/36) ([arlimus](https://github.com/arlimus))
-- Update common [\#34](https://github.com/dev-sec/ssh-baseline/pull/34) ([arlimus](https://github.com/arlimus))
-- support serverspec-2.0 [\#31](https://github.com/dev-sec/ssh-baseline/pull/31) ([bkw](https://github.com/bkw))
-- changed GIS to DTAG SEC [\#30](https://github.com/dev-sec/ssh-baseline/pull/30) ([atomic111](https://github.com/atomic111))
 - bugfix: lint error [\#29](https://github.com/dev-sec/ssh-baseline/pull/29) ([chris-rock](https://github.com/chris-rock))
 
 ## [1.0.0](https://github.com/dev-sec/ssh-baseline/tree/1.0.0) (2014-08-13)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/dd756df8ed36e73384789da88353405998bc134b...1.0.0)
+
 **Closed issues:**
 
 - HostKeys and OSes [\#13](https://github.com/dev-sec/ssh-baseline/issues/13)
@@ -194,7 +361,6 @@
 - make the integration tests even more useful with standalone invocation [\#14](https://github.com/dev-sec/ssh-baseline/pull/14) ([ehaselwanter](https://github.com/ehaselwanter))
 - Tests update [\#12](https://github.com/dev-sec/ssh-baseline/pull/12) ([arlimus](https://github.com/arlimus))
 - relax permissions on /etc/ssh and files [\#11](https://github.com/dev-sec/ssh-baseline/pull/11) ([arlimus](https://github.com/arlimus))
-- Tests update: remove comments + add conditional ciphers [\#10](https://github.com/dev-sec/ssh-baseline/pull/10) ([arlimus](https://github.com/arlimus))
 - add lockfiles and delete them from tree [\#9](https://github.com/dev-sec/ssh-baseline/pull/9) ([ehaselwanter](https://github.com/ehaselwanter))
 - streamline rubocop, fix issue which comes with this change [\#8](https://github.com/dev-sec/ssh-baseline/pull/8) ([ehaselwanter](https://github.com/ehaselwanter))
 - rubocop fixes [\#7](https://github.com/dev-sec/ssh-baseline/pull/7) ([ehaselwanter](https://github.com/ehaselwanter))
@@ -204,4 +370,4 @@
 
 
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
